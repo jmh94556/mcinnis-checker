@@ -2,6 +2,7 @@ name: Check McInnis Courts
 
 on:
   schedule:
+    # Runs every hour. (Note: GitHub cron operates in UTC time)
     - cron: '0 * * * *'
   workflow_dispatch:
 
