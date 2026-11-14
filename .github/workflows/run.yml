@@ -2,8 +2,8 @@ name: Check McInnis Courts
 
 on:
   schedule:
-    # Runs every hour from Tuesday 12:00 PM through Monday 12:00 PM (UTC-adjusted or standard cron)
-    - cron: '0 12-23,0-12 * * 2,3,4,5,6,7,1'
+    - cron: '0 * * * *'
+  workflow_dispatch:
 
 jobs:
   run-checker:
