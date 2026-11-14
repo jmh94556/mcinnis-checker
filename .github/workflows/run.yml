@@ -1,0 +1,24 @@
+name: Check McInnis Courts
+
+on:
+  schedule:
+    # Runs every hour from Tuesday 12:00 PM through Monday 12:00 PM (UTC-adjusted or standard cron)
+    - cron: '0 12-23,0-12 * * 2,3,4,5,6,7,1'
+
+jobs:
+  run-checker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: pip install requests
+      - name: Run script
+        env:
+          ALERT_EMAIL: ${{ secrets.ALERT_EMAIL }}
+          ALERT_PASSWORD: ${{ secrets.ALERT_PASSWORD }}
+        run: python checker.py
